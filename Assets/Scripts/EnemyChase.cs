@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class EnemyChase : MonoBehaviour
 {
-    public GameObject player;
-    public UnityEngine.AI.NavMeshAgent agent;
-    private Vector3 playerLocation;
+    public UnityEngine.AI.NavMeshAgent creature;
+    public UnityEngine.AI.NavMeshAgent player;
 
     void Update()
     {
-        playerLocation = player.transform.position;
 
-        agent.destination = playerLocation;
-
-        
+        creature.SetDestination(player.transform.position);
     }
 }
