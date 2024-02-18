@@ -16,7 +16,7 @@ public class EnemyChase : MonoBehaviour
         //Circuit(); 
         if(distance <= 10f)
         {
-            creature.speed = 5f; 
+            creature.speed = 4f; 
         }
         else 
         {
