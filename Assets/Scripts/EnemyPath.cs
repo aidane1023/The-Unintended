@@ -16,7 +16,7 @@ public class EnemyPath : MonoBehaviour
     private bool atEnd = false;
     private bool moving = true;
 
-    void Start()
+    void OnEnable()
     {
         if (waypoints.Count > 0 && waypoints[0] != null)
         {
@@ -38,17 +38,12 @@ public class EnemyPath : MonoBehaviour
         }
     }
 
-    IEnumerator MoveToNextWaypoint()
+    void MoveToNextWaypoint()
     {
         index++;
 
         if (index < waypoints.Count)
         {
-            if(index == 1)
-            {
-                yield return new WaitForSeconds(Random.Range(3f, 6f));
-            }
-
             currentTarget = waypoints[index];
         }
         else
