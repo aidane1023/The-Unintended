@@ -42,13 +42,6 @@ public class EnemyPath : MonoBehaviour
 
         if (index < waypoints.Count)
         {
-            /*
-            if(index == 1)
-            {
-                yield return new WaitForSeconds(Random.Range(3f, 6f));
-            }
-            */
-
             currentTarget = waypoints[index];
         }
         else
