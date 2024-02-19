@@ -8,25 +8,36 @@ public class EnemyChase : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent player;
 
     private float distance;
+    private RaycastHit hit;
+    public LayerMask mask;
+
 
     void Update()
     {
-        distance = Vector3.Distance(creature.transform.position, player.transform.position);
-        
-        
-        //Circuit(); 
-        if(distance <= 5f)
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, mask))
         {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+
             this.GetComponent<EnemyPath>().enabled = false;
-            //this.GetComponent("EnemyPath").enabled = false;
             creature.SetDestination(player.transform.position);
-            creature.speed = 4f; 
+            creature.speed = 4f;
         }
-        else 
+        else
         {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+
             this.GetComponent<EnemyPath>().enabled = true;
-            //this.GetComponent("EnemyPath").enabled = true;
             creature.speed = 2f;
         }
+    }
+
+    void Attack()
+    {
+        // If really close to player && Raycast hits
+        // Stop Moving
+        // Face player
+        // Swing arm
+        // If *Swinging* arm hits player, death.
     }
 }
