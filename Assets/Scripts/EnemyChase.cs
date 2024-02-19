@@ -11,15 +11,21 @@ public class EnemyChase : MonoBehaviour
 
     void Update()
     {
-        creature.SetDestination(player.transform.position);
         distance = Vector3.Distance(creature.transform.position, player.transform.position);
+        
+        
         //Circuit(); 
-        if(distance <= 10f)
+        if(distance <= 5f)
         {
+            this.GetComponent<EnemyPath>().enabled = false;
+            //this.GetComponent("EnemyPath").enabled = false;
+            creature.SetDestination(player.transform.position);
             creature.speed = 4f; 
         }
         else 
         {
+            this.GetComponent<EnemyPath>().enabled = true;
+            //this.GetComponent("EnemyPath").enabled = true;
             creature.speed = 2f;
         }
     }
