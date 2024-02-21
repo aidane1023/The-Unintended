@@ -61,6 +61,7 @@ public class Flashlight : MonoBehaviour
                 {
                     if (hit.collider.tag == "Creature")
                     {
+                        GameManager.enemyPresent = false;
                         Destroy(hit.collider.gameObject);
                     }
                 }
