@@ -6,8 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public List<Transform> spawnPoints;
     public GameObject creaturePrefab;
-    public Transform player;
-    public static bool enemyPresent;
+    public static bool enemyPresent = false;
     private int index = 0;
     
 
@@ -29,19 +28,9 @@ public class GameManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Vector3 playerLocation = (player.position);
-
         index = Random.Range(0, spawnPoints.Count);
-        Debug.Log("index #"+index);
         Vector3 spawnLocation = (spawnPoints[index].position);
 
-        if (Vector3.Distance(spawnLocation, playerLocation) >= 10f)
-        {
-            Instantiate(creaturePrefab, spawnLocation, Quaternion.identity);
-        }
-        else
-        {
-            SpawnEnemy();
-        }
+        Instantiate(creaturePrefab, spawnLocation, Quaternion.identity);
     }
 }
