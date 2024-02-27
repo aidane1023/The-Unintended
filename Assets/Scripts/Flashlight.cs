@@ -14,10 +14,13 @@ public class Flashlight : MonoBehaviour
     public float totalDuration = 1f; // Total duration of the stunning flicker effect
 
     float rayDistance = 10f;
+    float rayDistancePickUp = 3f;
     float timeLeft = 40f; // Doubled battery life
 
     bool isFlickering = false;
     bool hasStunFlickered = false;
+
+    int vile = 0;
 
     void Start()
     {
@@ -28,6 +31,24 @@ public class Flashlight : MonoBehaviour
 
     void Update()
     {
+        
+            RaycastHit hit1;
+            Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray1, out hit1, rayDistancePickUp))
+            {
+                if (hit1.collider.tag == "Battery" && Input.GetKeyUp(KeyCode.E) && batterylife.fillAmount <= 0.75f)
+                {
+                    Destroy(hit1.collider.gameObject);
+                    timeLeft += 20f;
+                    UpdateBatteryLifeUI();
+                }
+            else if (hit1.collider.tag == "Vile" && Input.GetKeyUp(KeyCode.E)){
+                Destroy(hit1.collider.gameObject);
+                vile += 1;
+            }
+            }
+       
+
         if (Input.GetKeyUp(KeyCode.F))
         {
             if (timeLeft > 0)
@@ -146,6 +167,18 @@ void UpdateBatteryLifeUI()
             light.spotAngle = 55;
             batterylife.fillAmount = 0.75f;
         }
-}
+        else if (timeLeft < 40f)
+        {
+            light.spotAngle = 60;
+            batterylife.fillAmount = 1f;
+        }
+        else if (timeLeft >= 40f)
+        {
+            timeLeft = 40f;
+            light.spotAngle = 60;
+            batterylife.fillAmount = 1f;
+        }
+
+    }
 
 }
