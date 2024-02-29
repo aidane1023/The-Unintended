@@ -5,10 +5,18 @@ using UnityEngine;
 public class EnemyChase : MonoBehaviour
 {
     public UnityEngine.AI.NavMeshAgent creature;
+    public Collider collider;
     private GameObject player;
+    public Animator animator;
+
+    public float moveSpeed;
+    private float stashedSpeed;
+    public bool inRange = false;
 
     void Start()
     {
+        stashedSpeed = moveSpeed;
+        creature.speed = moveSpeed;
         player = GameObject.Find("Player");
         StartCoroutine(StallMovement());
     }
@@ -18,6 +26,21 @@ public class EnemyChase : MonoBehaviour
     {
         Vector3 currentPosition = player.transform.position;
         creature.SetDestination(currentPosition);
+
+        if (Vector3.Distance(currentPosition, transform.position) <= 3f)
+        {
+            creature.isStopped = true;
+            moveSpeed = 0;
+            inRange = true;
+            StartCoroutine(Attack());
+        }
+        else
+        {
+            inRange = false;
+        }
+
+        animator.SetBool("inRange", inRange);
+        animator.SetFloat("Speed", moveSpeed);
     }
 
 
@@ -26,12 +49,14 @@ public class EnemyChase : MonoBehaviour
         yield return new WaitForSeconds(2f);
     }
 
-    void Attack()
+    IEnumerator Attack()
     {
-        // If really close to player && Raycast hits
-        // Stop Moving
-        // Face player
-        // Swing arm
-        // If *Swinging* arm hits player, death.
+        collider.enabled = true;
+
+        yield return new WaitForSeconds(2.667f);
+
+        creature.isStopped = false;
+        moveSpeed = stashedSpeed;
+        collider.enabled = false;
     }
 }
