@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+
     public float groundDrag;
-    public Animator animator;
 
      [Header("Ground Check")]
 
@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     public Transform orientation;
-    
 
     float horizontalInput;
     float verticalInput;
@@ -46,8 +45,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
-
-        animator.SetFloat("Speed", moveSpeed * horizontalInput * verticalInput);
     }
 
     private void FixedUpdate()
@@ -68,15 +65,5 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(moveDirection.normalized * moveSpeed *10f, ForceMode.Force);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Hit something");
-        
-        if (other.tag == "Creature")
-        {
-            //End Game
-            Debug.Log("Game End");
-            Destroy(this.gameObject);
-        }
-    }
+    
 }

@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Creature
-  - Battery
-  - Vile
   layers:
   - Default
   - TransparentFX
@@ -18,7 +16,7 @@ TagManager:
   - 
   - 
   - 
-  - Post Processing
+  - 
   - 
   - 
   - 

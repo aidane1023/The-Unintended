@@ -5,58 +5,39 @@ using UnityEngine;
 public class EnemyChase : MonoBehaviour
 {
     public UnityEngine.AI.NavMeshAgent creature;
-    public Collider collider;
-    private GameObject player;
-    public Animator animator;
+    public UnityEngine.AI.NavMeshAgent player;
 
-    public float moveSpeed;
-    private float stashedSpeed;
-    public bool inRange = false;
-
-    void Start()
-    {
-        stashedSpeed = moveSpeed;
-        creature.speed = moveSpeed;
-        player = GameObject.Find("Player");
-        StartCoroutine(StallMovement());
-    }
+    private float distance;
+    private RaycastHit hit;
+    public LayerMask mask;
 
 
     void Update()
     {
-        Vector3 currentPosition = player.transform.position;
-        creature.SetDestination(currentPosition);
-
-        if (Vector3.Distance(currentPosition, transform.position) <= 3f)
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, mask))
         {
-            creature.isStopped = true;
-            moveSpeed = 0;
-            inRange = true;
-            StartCoroutine(Attack());
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+
+            this.GetComponent<EnemyPath>().enabled = false;
+            creature.SetDestination(player.transform.position);
+            creature.speed = 4f;
         }
         else
         {
-            inRange = false;
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+
+            this.GetComponent<EnemyPath>().enabled = true;
+            creature.speed = 2f;
         }
-
-        animator.SetBool("inRange", inRange);
-        animator.SetFloat("Speed", moveSpeed);
     }
 
-
-    IEnumerator StallMovement()
+    void Attack()
     {
-        yield return new WaitForSeconds(2f);
-    }
-
-    IEnumerator Attack()
-    {
-        collider.enabled = true;
-
-        yield return new WaitForSeconds(2.667f);
-
-        creature.isStopped = false;
-        moveSpeed = stashedSpeed;
-        collider.enabled = false;
+        // If really close to player && Raycast hits
+        // Stop Moving
+        // Face player
+        // Swing arm
+        // If *Swinging* arm hits player, death.
     }
 }
