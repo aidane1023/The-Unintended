@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
+
+        animator.SetFloat("Speed", moveSpeed * Mathf.Abs(horizontalInput + verticalInput));
     }
 
     private void FixedUpdate()
