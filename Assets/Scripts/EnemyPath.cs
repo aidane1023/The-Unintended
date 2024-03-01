@@ -6,14 +6,12 @@ using UnityEngine.AI;
 public class EnemyPath : MonoBehaviour
 {
     public List<Transform> waypoints;
-    Transform currentTarget;
-    private int index = 1;
+    private Transform currentTarget;
+    public int index = 1;
 
     public NavMeshAgent creature;
     //private Animator animator
 
-    private bool reverse = false;
-    private bool atEnd = false;
     private bool moving = true;
 
     void OnEnable()
@@ -30,10 +28,10 @@ public class EnemyPath : MonoBehaviour
     {
         if (currentTarget != null)
         {
-            if ((Vector3.Distance(transform.position, currentTarget.position) <= 2f) && moving)
+            if ((Vector3.Distance(transform.position, currentTarget.position) <= 1f) && moving)
             {
                 moving = false;
-                StartCoroutine("MoveToNextWaypoint");
+                MoveToNextWaypoint();
             }
         }
     }
