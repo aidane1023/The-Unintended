@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerCam : MonoBehaviour
 {
@@ -12,11 +14,16 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    public PostProcessVolume v;
+    private Grain g;
+    private GameObject creature;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        v.profile.TryGetSettings(out g);
     }
 
 
@@ -32,5 +39,29 @@ public class PlayerCam : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
         
+    }
+
+    void FixedUpdate()
+    {
+        Vector3 currentPosition = GameObject.Find("Mutant(Clone)").transform.position;
+        
+        if (Vector3.Distance(currentPosition, transform.position) <= 10f)
+        {
+            Debug.Log("Getting Closer...");
+            if (g.intensity.value > 1f)
+            {
+                Debug.Log("Changing intensity ^");
+                g.intensity.value = 1f;
+            }
+        }
+        else
+        {
+            Debug.Log("Getting Further");
+            if (g.intensity.value < 0f)
+            {
+                Debug.Log("Changing intensity -^");
+                g.intensity.value = 0f;
+            }
+        }
     }
 }

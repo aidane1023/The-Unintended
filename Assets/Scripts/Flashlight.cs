@@ -80,6 +80,7 @@ public class Flashlight : MonoBehaviour
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, rayDistance))
                 {
+                    Debug.Log("Hit");
                     if (hit.collider.tag == "Creature")
                     {
                         GameManager.enemyPresent = false;

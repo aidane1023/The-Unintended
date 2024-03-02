@@ -15,9 +15,11 @@ public class EnemyChase : MonoBehaviour
 
     void Start()
     {
+        
         stashedSpeed = moveSpeed;
         creature.speed = moveSpeed;
         player = GameObject.Find("Player");
+
         StartCoroutine(StallMovement());
     }
 
@@ -42,7 +44,6 @@ public class EnemyChase : MonoBehaviour
         animator.SetBool("inRange", inRange);
         animator.SetFloat("Speed", moveSpeed);
     }
-
 
     IEnumerator StallMovement()
     {
