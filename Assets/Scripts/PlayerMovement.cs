@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float groundDrag;
-    public Animator animator;
+    //public Animator animator;
 
      [Header("Ground Check")]
 
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
         }
 
-        animator.SetFloat("Speed", moveSpeed * Mathf.Abs(horizontalInput + verticalInput));
+        //animator.SetFloat("Speed", moveSpeed * Mathf.Abs(horizontalInput + verticalInput));
     }
 
     private void FixedUpdate()
