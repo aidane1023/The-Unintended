@@ -24,6 +24,15 @@ public class PlayerCam : MonoBehaviour
     private AudioSource audio;
     public AudioClip noise;
 
+    LayerMask defaultMask;
+    LayerMask transparentFX;
+    LayerMask ignoreRaycast;
+    LayerMask action;
+    LayerMask water;
+    LayerMask ui;
+    LayerMask whatIsGround;
+    LayerMask postFX;
+
     void Start()
     {
         defaultMask = LayerMask.NameToLayer("Default");
