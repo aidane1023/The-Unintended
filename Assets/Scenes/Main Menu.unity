@@ -3684,7 +3684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &512642841
 Transform:
   m_ObjectHideFlags: 0
@@ -4222,7 +4222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.076000005, y: 0.6704815}
   m_AnchorMax: {x: 0.31756327, y: 0.7288519}
-  m_AnchoredPosition: {x: 123.49994, y: 2.5}
+  m_AnchoredPosition: {x: 123.49991, y: 2.5}
   m_SizeDelta: {x: 258.59998, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &589544323
@@ -6981,7 +6981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &839450819
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7022,7 +7022,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AI Programmer and Animations
+  m_text: 'Movement:  Left Stick
+
+    Look:          Right Stick
+
+    Pick up object:      
+    A
+
+    Enable Flashlight: RB
+
+    Stun:                        LB
+
+    Pause:                     
+    Y'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c416d60964340df4c9aa9cf86092f8f0, type: 2}
   m_sharedMaterial: {fileID: 6089517785053897726, guid: c416d60964340df4c9aa9cf86092f8f0, type: 2}
@@ -7187,7 +7199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.076000005, y: 0.5954445}
   m_AnchorMax: {x: 0.31756327, y: 0.6593333}
-  m_AnchoredPosition: {x: 123.49994, y: 2}
+  m_AnchoredPosition: {x: 123.49991, y: 2}
   m_SizeDelta: {x: 258.59998, y: -7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852140330
@@ -9569,7 +9581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1099184194
 RectTransform:
   m_ObjectHideFlags: 0
