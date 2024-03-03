@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     //public AudioSource buttonSound;
     bool pressed;
     bool exit;
+
     float pressedTimer;
     float pressedTime = 0.5f;
 

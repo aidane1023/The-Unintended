@@ -31,6 +31,8 @@ public class Flashlight : MonoBehaviour
 
     int vile = 0;
 
+    public GameObject gameOverScreen, pauseScreen;
+
     void Start()
     {
         light = GetComponent<Light>();
@@ -63,7 +65,7 @@ public class Flashlight : MonoBehaviour
         }
 
 
-        if ((Input.GetKeyUp(KeyCode.F) || Input.GetButtonDown("ToggleSwitch") && timeLeft > 0))
+        if ((Input.GetKeyUp(KeyCode.F) || Input.GetButtonDown("ToggleSwitch") && timeLeft > 0) && gameOverScreen.activeSelf == false && pauseScreen.activeSelf == false)
         {
             ToggleFlashlight();
         }
@@ -83,7 +85,7 @@ public class Flashlight : MonoBehaviour
                 }
             }
 
-            if ((Input.GetMouseButtonUp(1) || Input.GetButtonDown("Stun")) && !hasStunFlickered && batterylife.fillAmount >= 0.5f)
+            if ((Input.GetMouseButtonUp(1) || Input.GetButtonDown("Stun")) && !hasStunFlickered && batterylife.fillAmount >= 0.5f && gameOverScreen.activeSelf == false && pauseScreen.activeSelf == false)
             {
                 StartCoroutine(FlickerLight(totalDuration));
                 audio.clip = surge;

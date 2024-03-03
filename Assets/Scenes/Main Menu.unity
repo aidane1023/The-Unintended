@@ -865,6 +865,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &112508066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 803933032696650754, guid: b6060deaea01668498ebba9aaa105b75, type: 3}
+  m_PrefabInstance: {fileID: 1680487323078727402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &117581832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8034168492537317786, guid: 088005d3a882143469f0f51f6ea0c407, type: 3}
@@ -1535,6 +1540,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 967197067, guid: abd0ac41fbda15a45baa642269f7af15, type: 3}
+      propertyPath: isWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3513017142777163414, guid: abd0ac41fbda15a45baa642269f7af15, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -1912,6 +1921,22 @@ PrefabInstance:
     - target: {fileID: 3445322536696444863, guid: d6996e298e1eb794789cab631da4e6dc, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 123.499725
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445322536700859986, guid: d6996e298e1eb794789cab631da4e6dc, type: 3}
+      propertyPath: m_text
+      value: 'Movement:  Left Stick
+
+        Look:          Right Stick
+
+        Pick
+        up object:       X
+
+        Enable Flashlight: RB
+
+        Stun:                       
+        LB
+
+        Pause:                      Y'
       objectReference: {fileID: 0}
     - target: {fileID: 3445322537408931567, guid: d6996e298e1eb794789cab631da4e6dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2487,11 +2512,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552166778}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &552504671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1680487323609406389, guid: b6060deaea01668498ebba9aaa105b75, type: 3}
-  m_PrefabInstance: {fileID: 1680487323078727402}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &589544323
 GameObject:
   m_ObjectHideFlags: 0
@@ -6567,11 +6587,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuFirstButton: {fileID: 1387656386}
   creditsFirstButton: {fileID: 213403732}
-  controlsFirstButton: {fileID: 552504671}
+  controlsFirstButton: {fileID: 112508066}
   creditsClosedButton: {fileID: 88733809}
   controlsClosedButton: {fileID: 1587060316}
   creditsScreen: {fileID: 2726191314343715725}
   controlsScreen: {fileID: 512642840}
+  isWorldSpace: 1
 --- !u!1 &1583610169
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,10 @@ public class MenuScript : MonoBehaviour
 
     public GameObject creditsScreen, controlsScreen;
 
+    public bool isWorldSpace;
+
+    bool gameFocused = false;
+
     void Start()
     {
         EventSystem.current.SetSelectedGameObject(null);

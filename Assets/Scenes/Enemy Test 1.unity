@@ -12348,6 +12348,22 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 897132918}
+    - target: {fileID: 3445322536700859986, guid: d6996e298e1eb794789cab631da4e6dc, type: 3}
+      propertyPath: m_text
+      value: 'Movement:  Left Stick
+
+        Look:          Right Stick
+
+        Pick
+        up object:       X
+
+        Enable Flashlight: RB
+
+        Stun:                       
+        LB
+
+        Pause:                      Y'
+      objectReference: {fileID: 0}
     - target: {fileID: 3445322537408931567, guid: d6996e298e1eb794789cab631da4e6dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -26545,9 +26561,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 355926580}
     - target: {fileID: 2862213740616098685, guid: 4f0ad0002bcf6024f8d5a2b719b3f31e, type: 3}
+      propertyPath: pauseScreen
+      value: 
+      objectReference: {fileID: 658853026}
+    - target: {fileID: 2862213740616098685, guid: 4f0ad0002bcf6024f8d5a2b719b3f31e, type: 3}
       propertyPath: batterysound
       value: 
       objectReference: {fileID: 8300000, guid: 45711d2e97d846044a82431f1f325f70, type: 3}
+    - target: {fileID: 2862213740616098685, guid: 4f0ad0002bcf6024f8d5a2b719b3f31e, type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 925920414}
     - target: {fileID: 6069581538252057248, guid: 4f0ad0002bcf6024f8d5a2b719b3f31e, type: 3}
       propertyPath: v
       value: 
