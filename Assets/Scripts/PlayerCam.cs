@@ -19,6 +19,9 @@ public class PlayerCam : MonoBehaviour
     private GameObject creature;
     public GameObject pauseMenu;
 
+    private AudioSource audio;
+    public AudioClip noise;
+
 
     void Start()
     {
@@ -26,6 +29,9 @@ public class PlayerCam : MonoBehaviour
         Cursor.visible = false;
 
         v.profile.TryGetSettings(out g);
+
+        audio = GetComponent<AudioSource>();
+        audio.clip = noise;
     }
 
 
@@ -66,18 +72,20 @@ public class PlayerCam : MonoBehaviour
     {
         Vector3 currentPosition = GameObject.Find("Mutant(Clone)").transform.position;
         
-        if (Vector3.Distance(currentPosition, transform.position) <= 10f)
+        if (Vector3.Distance(currentPosition, transform.position) <= 15f)
         {
+            audio.Play();
             if (g.intensity.value < 1f)
             {
-                g.intensity.value = g.intensity.value + 0.2f;
+                g.intensity.value = g.intensity.value + 0.1f;
             }
         }
         else
         {
+            audio.Stop();
             if (g.intensity.value > 0f)
             {
-                g.intensity.value = g.intensity.value - 0.2f;
+                g.intensity.value = g.intensity.value - 0.1f;
             }
         }
     }

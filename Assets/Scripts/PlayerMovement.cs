@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     float footstepTimer = 0f;
     float footstepDelay = 0.4f; 
 
+    public GameObject gameOver;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -89,13 +91,12 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit something");
-
         if (other.tag == "Creature")
         {
             //End Game
             Debug.Log("Game End");
-            Destroy(this.gameObject);
+            gameOver.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }

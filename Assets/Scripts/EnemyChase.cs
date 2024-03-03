@@ -11,6 +11,14 @@ public class EnemyChase : MonoBehaviour
 
     public GameObject smoke;
 
+    private AudioSource audio;
+    public AudioClip step;
+    public AudioClip attack;
+
+    private float footstepTimer = 0f;
+    private float footstepDelay = 1f; 
+
+
     public float moveSpeed;
     private float stashedSpeed;
     public bool inRange = false;
@@ -21,6 +29,8 @@ public class EnemyChase : MonoBehaviour
         stashedSpeed = moveSpeed;
         creature.speed = moveSpeed;
         player = GameObject.Find("Player");
+        
+        audio = GetComponent<AudioSource>();
 
         StartCoroutine(StallMovement());
     }
@@ -47,16 +57,30 @@ public class EnemyChase : MonoBehaviour
         animator.SetFloat("Speed", moveSpeed);
     }
 
+    void FixedUpdate()
+    {
+        footstepTimer -= Time.deltaTime;
+        if (footstepTimer <= 0f)
+        {
+            audio.Play();
+            footstepTimer = footstepDelay;
+        }
+    }
+
     IEnumerator StallMovement()
     {
         yield return new WaitForSeconds(2f);
+        audio.clip = step;
     }
 
     IEnumerator Attack()
     {
+        audio.Stop();
+        audio.clip = attack;
         collider.enabled = true;
-
-        yield return new WaitForSeconds(2.667f);
+        yield return new WaitForSeconds(0.8f);
+        audio.Play();
+        yield return new WaitForSeconds(1.867f);
 
         creature.isStopped = false;
         moveSpeed = stashedSpeed;
