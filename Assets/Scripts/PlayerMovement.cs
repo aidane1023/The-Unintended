@@ -9,26 +9,32 @@ public class PlayerMovement : MonoBehaviour
     public float groundDrag;
     //public Animator animator;
 
-     [Header("Ground Check")]
-
-     public float playerHeight;
-     public LayerMask whatIsGround;
-     bool grounded;
-
+    [Header("Ground Check")]
+    public float playerHeight;
+    public LayerMask whatIsGround;
+    bool grounded;
 
     public Transform orientation;
-    
+
+    AudioSource audio;
+
+    public AudioClip walk;
+
+    Vector3 moveDirection;
+    Rigidbody rb;
 
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
-    Rigidbody rb;
+    float footstepTimer = 0f;
+    float footstepDelay = 0.4f; 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        audio = GetComponent<AudioSource>();
+        audio.clip = walk;
     }
 
     private void Update()
@@ -36,9 +42,8 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         MyInput();
-        
 
-        if(grounded)
+        if (grounded)
         {
             rb.drag = groundDrag;
         }
@@ -52,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-       MovePlayer(); 
+        MovePlayer();
     }
 
     private void MyInput()
@@ -65,13 +70,29 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * moveSpeed *10f, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+
+       
+       if ((Mathf.Abs(verticalInput) > 0 || Mathf.Abs(horizontalInput) > 0) && grounded)
+{
+    footstepTimer -= Time.deltaTime;
+    if (footstepTimer <= 0f)
+    {
+        audio.Play();
+        footstepTimer = footstepDelay;
+    }
+}
+
+        else
+        {
+            footstepTimer = 0f; 
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Hit something");
-        
+
         if (other.tag == "Creature")
         {
             //End Game
