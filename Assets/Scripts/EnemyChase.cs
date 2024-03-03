@@ -7,7 +7,9 @@ public class EnemyChase : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent creature;
     public Collider collider;
     private GameObject player;
-    //public Animator animator;
+    public Animator animator;
+
+    public GameObject smoke;
 
     public float moveSpeed;
     private float stashedSpeed;
@@ -15,9 +17,11 @@ public class EnemyChase : MonoBehaviour
 
     void Start()
     {
+        
         stashedSpeed = moveSpeed;
         creature.speed = moveSpeed;
         player = GameObject.Find("Player");
+
         StartCoroutine(StallMovement());
     }
 
@@ -39,10 +43,9 @@ public class EnemyChase : MonoBehaviour
             inRange = false;
         }
 
-        //animator.SetBool("inRange", inRange);
-        //animator.SetFloat("Speed", moveSpeed);
+        animator.SetBool("inRange", inRange);
+        animator.SetFloat("Speed", moveSpeed);
     }
-
 
     IEnumerator StallMovement()
     {
@@ -58,5 +61,10 @@ public class EnemyChase : MonoBehaviour
         creature.isStopped = false;
         moveSpeed = stashedSpeed;
         collider.enabled = false;
+    }
+
+    void OnDestroy()
+    {
+        Instantiate(smoke, transform.position, transform.rotation);
     }
 }
