@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
     {
         if(pressed == true)
         {
-            pressedTimer -= Time.deltaTime;
+            pressedTimer -= Time.unscaledDeltaTime;
             if ((pressedTimer < 0) && (exit == true))
             {
                 Application.Quit();
@@ -33,12 +33,6 @@ public class MainMenu : MonoBehaviour
             else if(pressedTimer < 0)
             {
                 SceneManager.LoadSceneAsync(selectedLevel);
-            }
-
-            if((pressedTimer < 0) && (exit == true))
-            {
-                Application.Quit();
-                print("Exit Success");
             }
         }
     }
@@ -64,5 +58,14 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-
+    public void ReturnToMainMenu()
+    {
+        selectedLevel = mainMenuScene;
+        if (pressed != true)
+        {
+            //buttonSound.Play(); 
+            pressedTimer = pressedTime;
+            pressed = true;
+        }
+    }
 }
