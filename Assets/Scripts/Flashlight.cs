@@ -19,13 +19,12 @@ public class Flashlight : MonoBehaviour
 
     AudioSource audio;
 
-
     public float flickerDuration = 0.1f;
     public float totalDuration = 1f;
 
     float rayDistance = 10f;
     float rayDistancePickUp = 3f;
-    float timeLeft = 40f;
+    float timeLeft = 60f; // Adjusted to start from 60 seconds
 
     bool isFlickering = false;
     bool hasStunFlickered = false;
@@ -42,7 +41,6 @@ public class Flashlight : MonoBehaviour
 
     void Update()
     {
-
         RaycastHit hit1;
         Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray1, out hit1, rayDistancePickUp))
@@ -50,7 +48,7 @@ public class Flashlight : MonoBehaviour
             if ((hit1.collider.tag == "Battery" && (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("PickUp")) && batterylife.fillAmount <= 0.75f))
             {
                 Destroy(hit1.collider.gameObject);
-                timeLeft += 20f;
+                timeLeft += 30f; // Scaled to maintain ratio with new total time
                 audio.clip = batterysound;
                 audio.Play();
                 UpdateBatteryLifeUI();
@@ -74,10 +72,10 @@ public class Flashlight : MonoBehaviour
         {
             timeLeft -= Time.deltaTime;
 
-
-            if ((timeLeft < 10f && light.spotAngle != 45) ||
-                (timeLeft < 20f && timeLeft >= 10f && light.spotAngle != 50) ||
-                (timeLeft < 30f && timeLeft >= 20f && light.spotAngle != 55))
+            // Adjusted thresholds for the new total time
+            if ((timeLeft < 15f && light.spotAngle != 45) ||
+                (timeLeft < 30f && timeLeft >= 15f && light.spotAngle != 50) ||
+                (timeLeft < 45f && timeLeft >= 30f && light.spotAngle != 55))
             {
                 if (!isFlickering)
                 {
@@ -132,18 +130,18 @@ public class Flashlight : MonoBehaviour
             }
         }
 
-
-        if (timeLeft < 10f)
+        // Adjusted thresholds for the new total time
+        if (timeLeft < 15f)
         {
             light.spotAngle = 45;
             batterylife.fillAmount = 0.25f;
         }
-        else if (timeLeft < 20f)
+        else if (timeLeft < 30f)
         {
             light.spotAngle = 50;
             batterylife.fillAmount = 0.50f;
         }
-        else if (timeLeft < 30f)
+        else if (timeLeft < 45f)
         {
             light.spotAngle = 55;
             batterylife.fillAmount = 0.75f;
@@ -154,7 +152,7 @@ public class Flashlight : MonoBehaviour
 
     IEnumerator FlickerLight(float duration)
     {
-        timeLeft -= 20;
+        timeLeft -= 30; // Scaled to maintain ratio with new total time
         UpdateBatteryLifeUI();
 
         float endTime = Time.time + duration;
@@ -168,33 +166,33 @@ public class Flashlight : MonoBehaviour
 
     void UpdateBatteryLifeUI()
     {
-        if (timeLeft < 10f)
+        // Adjusted thresholds for the new total time
+        if (timeLeft < 15f)
         {
             light.spotAngle = 45;
             batterylife.fillAmount = 0.25f;
         }
-        else if (timeLeft < 20f)
+        else if (timeLeft < 30f)
         {
             light.spotAngle = 50;
             batterylife.fillAmount = 0.50f;
         }
-        else if (timeLeft < 30f)
+        else if (timeLeft < 45f)
         {
             light.spotAngle = 55;
             batterylife.fillAmount = 0.75f;
         }
-        else if (timeLeft < 40f)
+        else if (timeLeft < 60f)
         {
             light.spotAngle = 60;
             batterylife.fillAmount = 1f;
         }
-        else if (timeLeft >= 40f)
+        else if (timeLeft >= 60f)
         {
-            timeLeft = 40f;
+            timeLeft = 60f;
             light.spotAngle = 60;
             batterylife.fillAmount = 1f;
         }
-
     }
 
     void ToggleFlashlight()
