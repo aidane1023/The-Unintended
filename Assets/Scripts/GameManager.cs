@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         index = Random.Range(0, spawnPoints.Count);
         Debug.Log("index #"+index);
         Vector3 spawnLocation = (spawnPoints[index].position);
+        Debug.Log("Creature Spawn at: "+spawnLocation);
 
         if (Vector3.Distance(spawnLocation, playerLocation) >= 10f)
         {
