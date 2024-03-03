@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     bool pressed;
     bool exit;
     float pressedTimer;
-    float pressedTime = 2.0f;
+    float pressedTime = 0.5f;
 
     //float loadTimer;
     //float loadTime = 5.0f;
@@ -34,12 +34,12 @@ public class MainMenu : MonoBehaviour
             {
                 SceneManager.LoadSceneAsync(selectedLevel);
             }
-        }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-            print("Exit Success");
+            if((pressedTimer < 0) && (exit == true))
+            {
+                Application.Quit();
+                print("Exit Success");
+            }
         }
     }
     public void StartGame()
@@ -53,36 +53,16 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-//    public void Credits()
-//    {
-//        selectedLevel = creditsScene;
-//        if (pressed != true)
-//        {
-//            buttonSound.Play(); 
-//            pressedTimer = pressedTime;
-//            pressed = true;
-//        }
-//    }
-
     public void ExitGame()
     {
         if (pressed != true)
         {
             //buttonSound.Play(); 
+            pressedTimer = pressedTime;
             exit = true;
             pressed = true;
         }
     }
 
-    public void MainMenuButton()
-    {
-        selectedLevel = mainMenuScene;
-        if (pressed != true)
-        {
-            //buttonSound.Play(); 
-            pressedTimer = pressedTime;
-            pressed = true;
-        }
-    }
 
 }
