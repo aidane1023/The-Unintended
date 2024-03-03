@@ -90,5 +90,6 @@ public class EnemyChase : MonoBehaviour
     void OnDestroy()
     {
         Instantiate(smoke, transform.position, transform.rotation);
+        Destroy(this);
     }
 }
