@@ -22,7 +22,6 @@ public class PlayerCam : MonoBehaviour
     private AudioSource audio;
     public AudioClip noise;
 
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -33,7 +32,6 @@ public class PlayerCam : MonoBehaviour
         audio = GetComponent<AudioSource>();
         audio.clip = noise;
     }
-
 
     void Update()
     {
@@ -56,8 +54,9 @@ public class PlayerCam : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            float mouseX = Input.GetAxisRaw("Mouse X") *  sensX;
-            float mouseY = Input.GetAxisRaw("Mouse Y") *  sensY;
+            // Add gamepad support
+            float mouseX = Input.GetAxisRaw("Mouse X") * sensX + Input.GetAxis("RightStickHorizontal") * sensX;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * sensY + Input.GetAxis("RightStickVertical") * sensY;
 
             yRotation += mouseX;
             xRotation -= mouseY;
@@ -71,7 +70,7 @@ public class PlayerCam : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 currentPosition = GameObject.Find("Mutant(Clone)").transform.position;
-        
+
         if (Vector3.Distance(currentPosition, transform.position) <= 15f)
         {
             audio.Play();
