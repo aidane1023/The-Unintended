@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class Escape : MonoBehaviour
 {
+    public GameObject pauseMenu;
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Cancel"))
         {
-            Application.Quit();
+            //Application.Quit();
+            pauseMenu.SetActive(true);
+        }
+
+        if (pauseMenu.activeSelf == true)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
         }
     }
 }
