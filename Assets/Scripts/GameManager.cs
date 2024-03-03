@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     void SpawnEnemy()
     {
         Vector3 playerLocation = (player.position);
+        Debug.Log("Player at: "+player.position);
 
         index = Random.Range(0, spawnPoints.Count);
         Debug.Log("index #"+index);

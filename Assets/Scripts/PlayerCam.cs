@@ -56,6 +56,7 @@ public class PlayerCam : MonoBehaviour
             yRotation += mouseX;
             xRotation -= mouseY;
             xRotation = Mathf.Clamp(xRotation, -15f, 30f);
+        }
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
@@ -67,20 +68,16 @@ public class PlayerCam : MonoBehaviour
         
         if (Vector3.Distance(currentPosition, transform.position) <= 10f)
         {
-            Debug.Log("Getting Closer...");
-            if (g.intensity.value > 1f)
+            if (g.intensity.value < 1f)
             {
-                Debug.Log("Changing intensity ^");
-                g.intensity.value = 1f;
+                g.intensity.value = g.intensity.value + 0.2f;
             }
         }
         else
         {
-            Debug.Log("Getting Further");
-            if (g.intensity.value < 0f)
+            if (g.intensity.value > 0f)
             {
-                Debug.Log("Changing intensity -^");
-                g.intensity.value = 0f;
+                g.intensity.value = g.intensity.value - 0.2f;
             }
         }
     }
