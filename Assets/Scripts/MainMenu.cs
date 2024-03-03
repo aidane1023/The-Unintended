@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
     {
         if(pressed == true)
         {
+            Time.timeScale = 1f;
             pressedTimer -= Time.unscaledDeltaTime;
             if ((pressedTimer < 0) && (exit == true))
             {

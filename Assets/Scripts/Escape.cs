@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Escape : MonoBehaviour
 {
-    public GameObject pauseMenu;
+    public GameObject pauseMenu, gameOverScreen;
     private void Update()
     {
 

@@ -17,13 +17,24 @@ public class PlayerCam : MonoBehaviour
     public PostProcessVolume v;
     private Grain g;
     private GameObject creature;
-    public GameObject pauseMenu;
+    //public GameObject camera;
+
+    public GameObject pauseMenu, gameOverScreen;
 
     private AudioSource audio;
     public AudioClip noise;
 
     void Start()
     {
+        defaultMask = LayerMask.NameToLayer("Default");
+        transparentFX = LayerMask.NameToLayer("TransparentFx");
+        ignoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
+        action = LayerMask.NameToLayer("Action");
+        water = LayerMask.NameToLayer("Water");
+        ui = LayerMask.NameToLayer("UI");
+        whatIsGround = LayerMask.NameToLayer("whatIsGround");
+        postFX = LayerMask.NameToLayer("Post Processing");
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -41,11 +52,17 @@ public class PlayerCam : MonoBehaviour
             pauseMenu.SetActive(true);
         }
 
-        if (pauseMenu.activeSelf == true)
+        if ((pauseMenu.activeSelf) == true || (gameOverScreen.activeSelf == true))
         {
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            if (gameOverScreen.activeSelf == true)
+            {
+                //creature.SetActive(false);
+                this.GetComponent<Camera>().cullingMask = (1 << ui);
+            }
         }
         else
         {
