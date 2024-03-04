@@ -16,7 +16,7 @@ public class EnemyChase : MonoBehaviour
     public AudioClip attack;
 
     private float footstepTimer = 0f;
-    private float footstepDelay = 1f; 
+    private float footstepDelay = 0.8f; 
 
 
     public float moveSpeed;
@@ -77,6 +77,7 @@ public class EnemyChase : MonoBehaviour
     {
         audio.Stop();
         audio.clip = attack;
+        
         collider.enabled = true;
         yield return new WaitForSeconds(0.8f);
         audio.Play();
@@ -85,6 +86,10 @@ public class EnemyChase : MonoBehaviour
         creature.isStopped = false;
         moveSpeed = stashedSpeed;
         collider.enabled = false;
+
+        audio.clip = step;
+
+        
     }
 
     void OnDestroy()
