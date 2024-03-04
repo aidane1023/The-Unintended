@@ -45,7 +45,7 @@ any further outbreak.<br />
 The goal of the game is to locate and collect all 5 viles scattered 
 across the lab without getting caught by the monster. The Monster 
 can be stunned with the flashlight to give you some extra time. 
-But be wary,using stun consumes half of the flashlight’s battery. 
+But be wary, using stun consumes half of the flashlight’s battery. 
 Run out of battery and you’re out of light. There are 6 extra 
 batteries around the map to help keep your flashlight charged,
 use them wisely.<br />
