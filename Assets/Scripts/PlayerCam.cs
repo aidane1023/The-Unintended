@@ -63,6 +63,8 @@ public class PlayerCam : MonoBehaviour
 
         if ((pauseMenu.activeSelf) == true || (gameOverScreen.activeSelf == true))
         {
+            g.intensity.value = 0f;
+            audio.Stop();
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -102,15 +104,19 @@ public class PlayerCam : MonoBehaviour
             audio.Play();
             if (g.intensity.value < 1f)
             {
-                g.intensity.value = g.intensity.value + 0.1f;
+                g.intensity.value = g.intensity.value + 0.01f;
             }
         }
         else
         {
-            audio.Stop();
+            
             if (g.intensity.value > 0f)
             {
-                g.intensity.value = g.intensity.value - 0.1f;
+                g.intensity.value = g.intensity.value - 0.01f;
+            }
+            else
+            {
+                audio.Stop();
             }
         }
     }

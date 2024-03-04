@@ -9,14 +9,13 @@ public class EnemyChase : MonoBehaviour
     private GameObject player;
     public Animator animator;
 
-    public GameObject smoke;
-
     private AudioSource audio;
     public AudioClip step;
     public AudioClip attack;
 
     private float footstepTimer = 0f;
     private float footstepDelay = 1f; 
+    private bool isAttacking;
 
 
     public float moveSpeed;
@@ -60,7 +59,7 @@ public class EnemyChase : MonoBehaviour
     void FixedUpdate()
     {
         footstepTimer -= Time.deltaTime;
-        if (footstepTimer <= 0f)
+        if (footstepTimer <= 0f && !isAttacking)
         {
             audio.Play();
             footstepTimer = footstepDelay;
@@ -75,21 +74,21 @@ public class EnemyChase : MonoBehaviour
 
     IEnumerator Attack()
     {
-        audio.Stop();
-        audio.clip = attack;
-        collider.enabled = true;
-        yield return new WaitForSeconds(0.8f);
-        audio.Play();
-        yield return new WaitForSeconds(1.867f);
+        if (!isAttacking)
+        {
+            isAttacking = true;
+            yield return new WaitForSeconds(0.45f);
+            audio.clip = attack;
+            audio.time = 0f;
+            audio.Play();
+            collider.enabled = true;
+            yield return new WaitForSeconds(2.436f);
+            audio.clip = step;
+            creature.isStopped = false;
+            moveSpeed = stashedSpeed;
+            collider.enabled = false;
+        }
 
-        creature.isStopped = false;
-        moveSpeed = stashedSpeed;
-        collider.enabled = false;
-    }
-
-    void OnDestroy()
-    {
-        Instantiate(smoke, transform.position, transform.rotation);
-        Destroy(this);
+        isAttacking = false; 
     }
 }
