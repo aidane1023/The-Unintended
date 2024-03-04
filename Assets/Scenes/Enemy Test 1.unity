@@ -27064,6 +27064,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 561701439}
     - target: {fileID: 2862213740616098685, guid: 4f0ad0002bcf6024f8d5a2b719b3f31e, type: 3}
+      propertyPath: escapeText
+      value: ESCAPE TO THE ENTRANCE
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862213740616098685, guid: 4f0ad0002bcf6024f8d5a2b719b3f31e, type: 3}
       propertyPath: batterylife
       value: 
       objectReference: {fileID: 355926580}
