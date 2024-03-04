@@ -9,8 +9,6 @@ public class EnemyChase : MonoBehaviour
     private GameObject player;
     public Animator animator;
 
-    public GameObject smoke;
-
     private AudioSource audio;
     public AudioClip step;
     public AudioClip attack;
@@ -60,7 +58,7 @@ public class EnemyChase : MonoBehaviour
     void FixedUpdate()
     {
         footstepTimer -= Time.deltaTime;
-        if (footstepTimer <= 0f)
+        if (footstepTimer <= 0f && !isAttacking)
         {
             audio.Play();
             footstepTimer = footstepDelay;
@@ -87,14 +85,6 @@ public class EnemyChase : MonoBehaviour
         moveSpeed = stashedSpeed;
         collider.enabled = false;
 
-        audio.clip = step;
-
-        
-    }
-
-    void OnDestroy()
-    {
-        Instantiate(smoke, transform.position, transform.rotation);
-        Destroy(this);
+        audio.clip = step;       
     }
 }

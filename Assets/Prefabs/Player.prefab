@@ -155,8 +155,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 77138331483834782}
   batterylife: {fileID: 0}
+  vilesound: {fileID: 0}
+  batterysound: {fileID: 0}
+  surge: {fileID: 0}
+  onoff: {fileID: 0}
   flickerDuration: 0.1
   totalDuration: 1
+  smoke: {fileID: 1723383645575121533, guid: 1df9defabb27e8049b21f36fbff009d1, type: 3}
+  gameOverScreen: {fileID: 0}
+  pauseScreen: {fileID: 0}
 --- !u!1 &4514663059838484628
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +411,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   orientation: {fileID: 6454201966795233256}
+  walk: {fileID: 0}
+  gameOver: {fileID: 0}
 --- !u!1 &9018987226652553658
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,3 +514,7 @@ MonoBehaviour:
   sensX: 600
   sensY: 600
   orientation: {fileID: 6454201966795233256}
+  v: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  noise: {fileID: 0}

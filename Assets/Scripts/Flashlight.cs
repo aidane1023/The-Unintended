@@ -30,6 +30,8 @@ public class Flashlight : MonoBehaviour
     bool hasStunFlickered = false;
 
     public GameObject winscreen;
+    
+    public GameObject smoke;
 
     int vile = 0;
 
@@ -101,6 +103,7 @@ public class Flashlight : MonoBehaviour
                     Debug.Log("Hit");
                     if (hit.collider.tag == "Creature")
                     {
+                        Instantiate(smoke, hit.collider.transform.position, hit.collider.transform.rotation);
                         GameManager.enemyPresent = false;
                         Destroy(hit.collider.gameObject);
                     }

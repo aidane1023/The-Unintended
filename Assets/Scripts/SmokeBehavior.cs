@@ -13,6 +13,6 @@ public class SmokeBehavior : MonoBehaviour
     IEnumerator DelayedDestroy()
     {
         yield return new WaitForSeconds(3f);
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }

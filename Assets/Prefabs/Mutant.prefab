@@ -1744,7 +1744,6 @@ MonoBehaviour:
   creature: {fileID: 7789267013808316969}
   collider: {fileID: 7789267012692939678}
   animator: {fileID: 7789267013808316975}
-  smoke: {fileID: 1723383645575121533, guid: 1df9defabb27e8049b21f36fbff009d1, type: 3}
   step: {fileID: 8300000, guid: d9b193e052e457244a968ed071317658, type: 3}
   attack: {fileID: 8300000, guid: 0444e700d963d874c91f3f321f1e4f16, type: 3}
   moveSpeed: 3
