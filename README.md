@@ -1,4 +1,4 @@
-# The Unintended
+# Unintended
 First Person Hallway with Guard Game <br />
 Group Name: TeamFo <br />
 
