@@ -48,7 +48,7 @@ public class Flashlight : MonoBehaviour
     //string vialsLeftText = $"Objective: Collect {vialsRemaining} vials";
     string vialsLeftText;
 
-    public string escapeText = "Escape to the entrance";
+    string escapeText = "ESCAPE TO THE ENTRANCE";
 
     void Start()
     {
@@ -65,12 +65,12 @@ public class Flashlight : MonoBehaviour
     { 
         if (vialsRemaining > 1)
         {
-            vialsLeftText = $"Objective: Collect {vialsRemaining} vials";
+            vialsLeftText = $"OBJECTIVE: COLLECT {vialsRemaining} VIALS";
             objectiveText.text = vialsLeftText;
         }
         else if (vialsRemaining == 1)
         {
-            vialsLeftText = $"Objective: Collect {vialsRemaining} vial";
+            vialsLeftText = $"OBJECTIVE: COLLECT {vialsRemaining} VIAL";
             objectiveText.text = vialsLeftText;
         }
         else if (vialsRemaining <= 0)
