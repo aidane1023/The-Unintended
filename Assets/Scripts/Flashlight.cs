@@ -253,7 +253,7 @@ public class Flashlight : MonoBehaviour
         {
             winscreen.SetActive(true);
             Debug.Log("WINNER");
-
+            Time.timeScale = 0f;
         }
      }
 }
