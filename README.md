@@ -51,3 +51,8 @@ batteries around the map to help keep your flashlight charged,
 use them wisely.<br />
 
 -------------------------------------------
+
+## RELEASE NOTES: <br />
+
+v1.0.0 03-04-2024<br />
+- first release<br />
