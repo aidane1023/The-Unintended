@@ -58,7 +58,7 @@ public class EnemyChase : MonoBehaviour
     void FixedUpdate()
     {
         footstepTimer -= Time.deltaTime;
-        if (footstepTimer <= 0f && !isAttacking)
+        if (footstepTimer <= 0f)
         {
             audio.Play();
             footstepTimer = footstepDelay;
