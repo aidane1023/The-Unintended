@@ -18,17 +18,17 @@ public class EnemyChase : MonoBehaviour
 
 
     public float moveSpeed;
-    private float stashedSpeed;
-    public bool inRange = false;
+    private bool inRange = false;
+    private bool isAttacking = false;
 
     void Start()
     {
-        
-        stashedSpeed = moveSpeed;
-        creature.speed = moveSpeed;
+        creature.speed = 0f;
         player = GameObject.Find("Player");
         
         audio = GetComponent<AudioSource>();
+
+        animator.SetFloat("Speed", creature.speed);
 
         StartCoroutine(StallMovement());
     }
@@ -39,26 +39,29 @@ public class EnemyChase : MonoBehaviour
         Vector3 currentPosition = player.transform.position;
         creature.SetDestination(currentPosition);
 
-        if (Vector3.Distance(currentPosition, transform.position) <= 3f)
+        if(isAttacking)
         {
-            creature.isStopped = true;
-            moveSpeed = 0;
             inRange = true;
-            StartCoroutine(Attack());
+            creature.speed = 0f;
         }
         else
         {
             inRange = false;
+            creature.speed = moveSpeed;
+
+            if (Vector3.Distance(currentPosition, transform.position) <= 2.5f)
+            {
+                StartCoroutine(Attack());
+            }
         }
 
         animator.SetBool("inRange", inRange);
-        animator.SetFloat("Speed", moveSpeed);
     }
 
     void FixedUpdate()
     {
         footstepTimer -= Time.deltaTime;
-        if (footstepTimer <= 0f)
+        if (footstepTimer <= 0f && audio.clip == step)
         {
             audio.Play();
             footstepTimer = footstepDelay;
@@ -68,23 +71,43 @@ public class EnemyChase : MonoBehaviour
     IEnumerator StallMovement()
     {
         yield return new WaitForSeconds(2f);
+        creature.speed = moveSpeed;
         audio.clip = step;
+        animator.SetFloat("Speed", moveSpeed);
     }
 
     IEnumerator Attack()
-    {
-        audio.Stop();
-        audio.clip = attack;
+    {   
+        Debug.Log("Distance is: "+Vector3.Distance(player.transform.position, transform.position));
+        creature.SetDestination(player.transform.position);
+        isAttacking = true;
+        if(audio.clip == step)
+        {
+            audio.Stop();
+            audio.clip = attack;
+            audio.time = 0f;
+        } 
         
         collider.enabled = true;
-        yield return new WaitForSeconds(0.8f);
-        audio.Play();
-        yield return new WaitForSeconds(1.867f);
 
-        creature.isStopped = false;
-        moveSpeed = stashedSpeed;
+        yield return new WaitForSeconds(.84f);
+
+        audio.Play();
+
+        yield return new WaitForSeconds(1.827f);
+
         collider.enabled = false;
 
-        audio.clip = step;       
+        if (Vector3.Distance(player.transform.position, transform.position) > 2.5f)
+        {
+            isAttacking = false;
+            inRange = false;
+            audio.clip = step;
+        }
+        else
+        {
+            StartCoroutine(Attack());
+        }
+        
     }
 }
