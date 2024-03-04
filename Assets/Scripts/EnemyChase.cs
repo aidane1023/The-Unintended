@@ -49,7 +49,7 @@ public class EnemyChase : MonoBehaviour
             inRange = false;
             creature.speed = moveSpeed;
 
-            if (Vector3.Distance(currentPosition, transform.position) <= 2.5f)
+            if (Vector3.Distance(currentPosition, transform.position) <= 3f)
             {
                 StartCoroutine(Attack());
             }
@@ -98,7 +98,7 @@ public class EnemyChase : MonoBehaviour
 
         collider.enabled = false;
 
-        if (Vector3.Distance(player.transform.position, transform.position) > 2.5f)
+        if (Vector3.Distance(player.transform.position, transform.position) > 3f)
         {
             isAttacking = false;
             inRange = false;
