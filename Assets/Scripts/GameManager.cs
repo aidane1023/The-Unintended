@@ -31,14 +31,9 @@ public class GameManager : MonoBehaviour
     void SpawnEnemy()
     {
         Vector3 playerLocation = (player.position);
-        Debug.Log("Player at: "+player.position);
 
         index = Random.Range(0, spawnPoints.Count);
-        Debug.Log("index #"+index);
         Vector3 spawnLocation = (spawnPoints[index].position);
-        Debug.Log("Creature Spawn at: "+spawnLocation);
-
-        Debug.Log("Distance: "+ Vector3.Distance(spawnLocation, playerLocation));
 
         if (Vector3.Distance(spawnLocation, playerLocation) >= 20f)
         {
