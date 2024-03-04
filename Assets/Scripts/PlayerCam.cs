@@ -97,7 +97,7 @@ public class PlayerCam : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 currentPosition = GameObject.Find("Mutant(Clone)").transform.position;
+        Vector3 currentPosition = GameObject.Find("Monster(Clone)").transform.position;
 
         if (Vector3.Distance(currentPosition, transform.position) <= 15f)
         {

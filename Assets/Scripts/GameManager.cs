@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (enemyPresent == false && smokeSpawned)
+        if (enemyPresent == false)
         {
             enemyPresent = true;
             SpawnEnemy();

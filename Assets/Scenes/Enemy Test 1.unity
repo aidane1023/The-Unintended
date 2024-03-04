@@ -22758,7 +22758,7 @@ MonoBehaviour:
   - {fileID: 589544324}
   - {fileID: 206535500}
   - {fileID: 699164069}
-  creaturePrefab: {fileID: 6978434024281388207, guid: da27b4d9ca00c9e41b61af3f092ec213, type: 3}
+  creaturePrefab: {fileID: 5498279856335937227, guid: 07ef2b7a02d8b554da5d0568ad2f34a4, type: 3}
   player: {fileID: 1841532384}
 --- !u!4 &1863324054
 Transform:
