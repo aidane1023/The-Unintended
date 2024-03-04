@@ -16,7 +16,7 @@ Itch.io page: https://teamfo.itch.io/unintended <br />
 
 ## HOW TO PLAY:<br />
 
-#Mouse and Keyboard<br />
+# Mouse and Keyboard<br />
 - Arrow Keys / WASD - Movement / Menu navigation<br />
 - Mouse Move - Look around<br />
 - Left Mouse Click - Select menu option<br />
@@ -25,7 +25,7 @@ Itch.io page: https://teamfo.itch.io/unintended <br />
 - Right Mouse Click - Stun (must have 2 bars of battery and enabled flashlight)<br />
 - Esc Key - Pause Game<br />
 
-#Controller<br />
+# Controller<br />
 - Left Stick - Movement / Menu navigation<br />
 - Right Stick - Look around<br />
 - Left Mouse Click - Select menu option<br />
