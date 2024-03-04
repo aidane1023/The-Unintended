@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Flashlight : MonoBehaviour
 {
@@ -31,9 +32,21 @@ public class Flashlight : MonoBehaviour
 
     public GameObject smoke;
 
-    int vile = 0;
+    public int vile = 0;
+    public int vialsRemaining = 5;
+    public GameObject objectiveTextUI;
+    public GameObject objectiveTextNumberUI;
+    
+    TextMeshProUGUI objectiveText;
+    TextMeshProUGUI objectiveTextNumber;
 
     public GameObject gameOverScreen, pauseScreen;
+
+    //string formattedString = string.Format("Objective: Collect {0} vials", vialsRemaining);
+    //string vialsLeftText = $"Objective: Collect {vialsRemaining} vials";
+    string vialsLeftText;
+
+    public string escapeText = "Escape to the entrance";
 
     void Start()
     {
@@ -41,10 +54,29 @@ public class Flashlight : MonoBehaviour
         light.enabled = false;
         on = false;
         audio = GetComponent<AudioSource>();
+        objectiveTextNumber = objectiveTextNumberUI.GetComponent<TextMeshProUGUI>();
+        objectiveText = objectiveTextUI.GetComponent<TextMeshProUGUI>();
+        string vialsLeftText = $"Objective: Collect {vialsRemaining} vials";
     }
 
     void Update()
-    {
+    { 
+        if (vialsRemaining > 1)
+        {
+            vialsLeftText = $"Objective: Collect {vialsRemaining} vials";
+            objectiveText.text = vialsLeftText;
+        }
+        else if (vialsRemaining == 1)
+        {
+            vialsLeftText = $"Objective: Collect {vialsRemaining} vial";
+            objectiveText.text = vialsLeftText;
+        }
+        else if (vialsRemaining <= 0)
+        {
+            //objectiveTextNumberUI.SetActive(false);
+            objectiveText.text = escapeText;
+        }
+
         RaycastHit hit1;
         Ray ray1 = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray1, out hit1, rayDistancePickUp))
@@ -63,6 +95,7 @@ public class Flashlight : MonoBehaviour
                 vile += 1;
                 audio.clip = vilesound;
                 audio.Play();
+                vialsRemaining -= 1;
             }
         }
 
