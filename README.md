@@ -28,8 +28,7 @@ Itch.io page: https://teamfo.itch.io/unintended <br />
 ### Controller<br />
 - Left Stick - Movement / Menu navigation<br />
 - Right Stick - Look around<br />
-- A - Select menu option<br />
-- X - Pick up object<br />
+- A - Pick up object / Select menu option<br />
 - Right Bumper - Enable flashlight<br />
 - Left Bumper - Stun (must have 2 bars of battery and enabled flashlight)<br />
 - Y - Pause Game<br />
