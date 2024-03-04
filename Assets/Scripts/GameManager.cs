@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject creaturePrefab;
     public Transform player;
     public static bool enemyPresent = true;
+    public static bool smokeSpawned = false;
     private int index = 0;
     
 
@@ -20,8 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
-        if (enemyPresent == false)
+        if (enemyPresent == false && smokeSpawned)
         {
             enemyPresent = true;
             SpawnEnemy();

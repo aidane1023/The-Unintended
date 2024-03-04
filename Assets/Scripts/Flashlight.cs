@@ -104,8 +104,11 @@ public class Flashlight : MonoBehaviour
                     if (hit.collider.tag == "Creature")
                     {
                         Instantiate(smoke, hit.collider.transform.position, hit.collider.transform.rotation);
-                        GameManager.enemyPresent = false;
                         Destroy(hit.collider.gameObject);
+                        if(GameManager.enemyPresent && GameManager.smokeSpawned)
+                        {
+                            GameManager.enemyPresent = false;
+                        }
                     }
                 }
                 hasStunFlickered = true;

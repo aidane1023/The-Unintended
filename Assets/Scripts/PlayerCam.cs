@@ -107,6 +107,11 @@ public class PlayerCam : MonoBehaviour
                 g.intensity.value = g.intensity.value + 0.01f;
             }
         }
+        else if (Vector3.Distance(currentPosition, transform.position) >= 20f)
+        {
+            g.intensity.value = 0f;
+            audio.Stop();
+        }
         else
         {
             
