@@ -5500,6 +5500,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7507585299317500075, guid: 857f5214bb3a1684dbe0e225e3bf7d5d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 133.06995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7507585300464810740, guid: 857f5214bb3a1684dbe0e225e3bf7d5d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 130.67493
+      objectReference: {fileID: 0}
     - target: {fileID: 7507585300790402036, guid: 857f5214bb3a1684dbe0e225e3bf7d5d, type: 3}
       propertyPath: m_Name
       value: GameWinScreen
@@ -27107,6 +27115,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 658853026}
+    - target: {fileID: 6069581538252057248, guid: 4f0ad0002bcf6024f8d5a2b719b3f31e, type: 3}
+      propertyPath: gameWinScreen
+      value: 
+      objectReference: {fileID: 561701439}
     - target: {fileID: 6069581538252057248, guid: 4f0ad0002bcf6024f8d5a2b719b3f31e, type: 3}
       propertyPath: gameOverScreen
       value: 

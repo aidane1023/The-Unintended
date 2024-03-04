@@ -19,7 +19,7 @@ public class PlayerCam : MonoBehaviour
     private GameObject creature;
     //public GameObject camera;
 
-    public GameObject pauseMenu, gameOverScreen;
+    public GameObject pauseMenu, gameOverScreen, gameWinScreen;
 
     private AudioSource audio;
     public AudioClip noise;
@@ -57,11 +57,18 @@ public class PlayerCam : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            //Application.Quit();
-            pauseMenu.SetActive(true);
+            if (gameOverScreen.activeSelf == true || gameWinScreen.activeSelf == true)
+            {
+                //Application.Quit();
+                pauseMenu.SetActive(false);
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+            }
         }
 
-        if ((pauseMenu.activeSelf) == true || (gameOverScreen.activeSelf == true))
+        if (pauseMenu.activeSelf == true || gameOverScreen.activeSelf == true || gameWinScreen.activeSelf == true)
         {
             g.intensity.value = 0f;
             audio.Stop();
@@ -73,6 +80,7 @@ public class PlayerCam : MonoBehaviour
             {
                 //creature.SetActive(false);
                 this.GetComponent<Camera>().cullingMask = (1 << ui);
+                Time.timeScale = 0f;
             }
         }
         else

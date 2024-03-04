@@ -5971,7 +5971,7 @@ PrefabInstance:
     - target: {fileID: -2976466140241774681, guid: 35c6474ab50be7e47bd0ef5643e491cc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: af4c289deea784e4797c754341d07efe, type: 2}
+      objectReference: {fileID: 2100000, guid: ba903c4cdd46899488cdecdaddc58cbd, type: 2}
     - target: {fileID: 919132149155446097, guid: 35c6474ab50be7e47bd0ef5643e491cc, type: 3}
       propertyPath: m_Name
       value: wooden texture
