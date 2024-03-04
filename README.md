@@ -10,7 +10,7 @@ Members:<br />
 * Dareen Houmaidan - Artist<br />
 * Joe Lin - Artist<br />
 
-Itch.io page: https://citrus-bombers.itch.io/citrus-pop <br />
+Itch.io page: https://teamfo.itch.io/unintended <br />
 
 -------------------------------------------
 
