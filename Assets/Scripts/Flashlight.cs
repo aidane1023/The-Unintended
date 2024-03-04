@@ -24,11 +24,13 @@ public class Flashlight : MonoBehaviour
 
     float rayDistance = 10f;
     float rayDistancePickUp = 3f;
-    float timeLeft = 60f; // Adjusted to start from 60 seconds
+    float timeLeft = 60f; 
 
     bool isFlickering = false;
     bool hasStunFlickered = false;
 
+    public GameObject winscreen;
+    
     public GameObject smoke;
 
     int vile = 0;
@@ -52,15 +54,17 @@ public class Flashlight : MonoBehaviour
             if ((hit1.collider.tag == "Battery" && (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("PickUp")) && batterylife.fillAmount <= 0.75f))
             {
                 Destroy(hit1.collider.gameObject);
-                timeLeft += 30f; // Scaled to maintain ratio with new total time
+                timeLeft += 30f; 
                 audio.clip = batterysound;
                 audio.Play();
                 UpdateBatteryLifeUI();
             }
             else if ((hit1.collider.tag == "Vile" && (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("PickUp"))))
             {
+                vile = vile + 1;
+                Debug.Log(vile);
                 Destroy(hit1.collider.gameObject);
-                vile += 1;
+                
                 audio.clip = vilesound;
                 audio.Play();
             }
@@ -76,7 +80,7 @@ public class Flashlight : MonoBehaviour
         {
             timeLeft -= Time.deltaTime;
 
-            // Adjusted thresholds for the new total time
+          
             if ((timeLeft < 15f && light.spotAngle != 45) ||
                 (timeLeft < 30f && timeLeft >= 15f && light.spotAngle != 50) ||
                 (timeLeft < 45f && timeLeft >= 30f && light.spotAngle != 55))
@@ -135,7 +139,7 @@ public class Flashlight : MonoBehaviour
             }
         }
 
-        // Adjusted thresholds for the new total time
+       
         if (timeLeft < 15f)
         {
             light.spotAngle = 45;
@@ -157,7 +161,7 @@ public class Flashlight : MonoBehaviour
 
     IEnumerator FlickerLight(float duration)
     {
-        timeLeft -= 30; // Scaled to maintain ratio with new total time
+        timeLeft -= 30; 
         UpdateBatteryLifeUI();
 
         float endTime = Time.time + duration;
@@ -171,7 +175,7 @@ public class Flashlight : MonoBehaviour
 
     void UpdateBatteryLifeUI()
     {
-        // Adjusted thresholds for the new total time
+       
         if (timeLeft < 15f)
         {
             light.spotAngle = 45;
@@ -207,4 +211,16 @@ public class Flashlight : MonoBehaviour
         audio.Play();
         on = light.enabled;
     }
+
+     private void OnTriggerEnter(Collider other)
+    {
+        
+
+        if (other.gameObject.tag == "Win" && vile == 5)
+        {
+            winscreen.SetActive(true);
+            Debug.Log("WINNER");
+
+        }
+     }
 }
